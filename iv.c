@@ -22,7 +22,7 @@ int main(int argc, char **argv)
 	if(pstr[0] == '#') fgets(pstr, 1024, pfile);
 	sscanf(pstr, "%d %d", &width, &height);
 	printf("%d %d", width, height);
-
+	fgets(pstr, 1024, pfile);
 	
 	SDL_Window *pwindow = SDL_CreateWindow("Image Viewer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, 0);
 	SDL_Surface *psurface = SDL_GetWindowSurface(pwindow);
@@ -34,9 +34,9 @@ int main(int argc, char **argv)
 		for(int x = 0; x < width; x++)
 		{
 			Uint8 r, g, b;
-			r = (Uint8)getc(pfile);
-			g = (Uint8)getc(pfile);
-			b = (Uint8)getc(pfile);
+			r = (char)getc(pfile);
+			g = (char)getc(pfile);
+			b = (char)getc(pfile);
 		       	color = SDL_MapRGB(psurface->format, r, g, b);
 	
 			SDL_FillRect(psurface, &pixel, color);
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
 			pixel.y = y;
 		}
 	SDL_UpdateWindowSurface(pwindow);
-	SDL_Delay(30000);
+	SDL_Delay(10000);
 	fclose(pfile);
 	free(pstr);
 	return 0;
