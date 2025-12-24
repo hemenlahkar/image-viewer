@@ -23,6 +23,7 @@ int main(int argc, char **argv)
 	sscanf(pstr, "%d %d", &width, &height);
 	printf("%d %d", width, height);
 	fgets(pstr, 1024, pfile);
+	free(pstr);
 	
 	SDL_Window *pwindow = SDL_CreateWindow("Image Viewer", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, 0);
 	SDL_Surface *psurface = SDL_GetWindowSurface(pwindow);
@@ -44,8 +45,19 @@ int main(int argc, char **argv)
 			pixel.y = y;
 		}
 	SDL_UpdateWindowSurface(pwindow);
-	SDL_Delay(10000);
+
 	fclose(pfile);
-	free(pstr);
+	
+	int is_app_running = 1;
+	while(is_app_running)
+	{
+		SDL_Event event;
+		while(SDL_PollEvent(&event))
+		{
+			if(event.type == SDL_QUIT)
+				is_app_running = 0;
+		}
+		SDL_Delay(100);
+	}
 	return 0;
 }
