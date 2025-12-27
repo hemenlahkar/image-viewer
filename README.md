@@ -6,4 +6,4 @@
 ## Usage
 iv random_image.ppm
 ## Author
-<a href="https://github.com/hemenlahkar/" style="color:green; cursor:pointer;>`Hemen Lahkar`</a>
+<a href="https://github.com/hemenlahkar/" style="color:green; cursor:pointer;">`Hemen Lahkar`</a>
