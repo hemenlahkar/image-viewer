@@ -21,7 +21,6 @@ int main(int argc, char **argv)
 	fgets(pstr, 1024, pfile);
 	if(pstr[0] == '#') fgets(pstr, 1024, pfile);
 	sscanf(pstr, "%d %d", &width, &height);
-	printf("%d %d", width, height);
 	fgets(pstr, 1024, pfile);
 	free(pstr);
 	
